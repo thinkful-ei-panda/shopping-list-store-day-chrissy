@@ -1,3 +1,5 @@
+'use strict'
+
 const store = {
   items: [
     { id: cuid(), name: 'apples', checked: false },
@@ -5,8 +7,13 @@ const store = {
     { id: cuid(), name: 'milk', checked: true },
     { id: cuid(), name: 'bread', checked: false }
   ],
-  hideCheckedItems: false
+  hideCheckedItems: false,
 };
+
+//Scrap the plans below, you tried for too long and didn't work out. Try slimming it down and keeping it all down to the space
+//around the original item names. IE, click button, open form, click again to replace name with entered text.
+
+//Incorporate a way for it to recognize & indicate which item is up for renaming.
 
 const generateItemElement = function (item) {
   let itemTitle = `<span class='shopping-item shopping-item__checked'>${item.name}</span>`;
@@ -15,6 +22,8 @@ const generateItemElement = function (item) {
      <span class='shopping-item'>${item.name}</span>
     `;
   }
+
+  //Make it so that text entered in the rename item form replaces the name of the item indicated by the rename toggle. The item id would stay the same, only the name changes.
 
   return `
     <li class='js-item-element' data-item-id='${item.id}'>
@@ -26,6 +35,9 @@ const generateItemElement = function (item) {
         <button class='shopping-item-delete js-item-delete'>
           <span class='button-label'>delete</span>
         </button>
+        <button class='shopping-item-rename js-item-rename'>
+        <span class='button-label'>rename</span>
+      </button>
       </div>
     </li>`;
 };
@@ -88,6 +100,11 @@ const handleItemCheckClicked = function () {
     render();
   });
 };
+
+const handleItemRenameClicked = function () {
+
+  })
+}
 
 const getItemIdFromElement = function (item) {
   return $(item)
